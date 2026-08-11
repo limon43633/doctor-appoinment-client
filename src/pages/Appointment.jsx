@@ -9,6 +9,8 @@ const Appointment = () => {
   const {doctors, currencySymbol} = useContext(AppContext)
   const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
+
+
   const [docInfo, setDocInfo] = useState(null)
   const [docSlots, setDocSlots] = useState([])
   const [slotIndex, setSlotIndex] = useState(0)
@@ -47,7 +49,7 @@ const Appointment = () => {
       let timeSlots = []
 
       while(currentDate < endTime) {
-        let formattedTime = currentDate.toLocaleTimeString([], { hours: '2-digit', minute: '2-digit'})
+        let formattedTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})
 
         // add slot to array
         timeSlots.push({
@@ -63,6 +65,8 @@ const Appointment = () => {
 
     }
   }
+
+
 
   useEffect(()=>{
     fetchDocInfo()
@@ -114,13 +118,32 @@ const Appointment = () => {
       <div className='flex gap-3 items-center w-full overflow-x-scroll mt-4'>
         {
           docSlots.length && docSlots.map((item, index)=>(
-            <div className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-gray-300'}`} key={index}>
+            <div onClick={()=> setSlotIndex(index)} className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-gray-300'}`} key={index}>
               <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
               <p>{item[0] && item[0].datetime.getDate()}</p>
             </div>
           ))
         }
       </div>
+
+      {/* time button */}
+
+      <div className='flex items-center gap-3 w-full overflow-x-scroll mt-4 min-w-0'>
+
+      {docSlots.length && docSlots[slotIndex].map((item,index)=>(
+
+      <p onClick={()=> setSlotTime(item.time)} className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${item.time === slotTime ? 'bg-primary text-white' : 'text-gray-400 border border-2 border-gray-300'}`} key={index}>
+
+      {item.time.toLowerCase()}
+
+      </p>
+
+      ))}
+
+      </div>
+
+
+
     </div>
 
 
