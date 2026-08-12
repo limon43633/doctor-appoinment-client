@@ -4,6 +4,7 @@ import SpecialityMenu from '../components/SpecialityMenu'
 import TopDoctors from '../components/TopDoctors'
 import Banner from '../components/Banner'
 import TrustBar from '../components/TrustBar'
+import Testimonials from '../components/Testimonials'
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <TrustBar />
       <SpecialityMenu />
       <TopDoctors />
+      <Testimonials />
       <Banner />
     </div>
   )

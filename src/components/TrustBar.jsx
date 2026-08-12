@@ -58,7 +58,7 @@ const TrustBar = () => {
 
   return (
     <div ref={sectionRef} className='bg-primary rounded-2xl mt-4'>
-      <div className='grid grid-cols-2 md:grid-cols-4 divide-y divide-white/10 md:divide-y-0 md:divide-x'>
+      <div className='grid grid-cols-2 md:grid-cols-4 divide-y divide-white/25 md:divide-y-0 md:divide-x md:divide-white/25'>
         {statsData.map((stat, index) => {
           const Icon = stat.icon
           const displayValue = stat.decimals > 0
@@ -67,8 +67,8 @@ const TrustBar = () => {
 
           return (
             <div key={stat.label} className='flex justify-center'>
-              <div className='flex items-center gap-4 px-6 py-2'>
-                <div className='w-12 h-12 shrink-0 flex items-center justify-center rounded-full bg-white/15 text-white'>
+              <div className='flex items-center gap-4 px-6 py-5'>
+                <div className='w-12 h-12 shrink-0 flex items-center justify-center rounded-full bg-white/15 border border-white/20 text-white'>
                   <Icon size={22} strokeWidth={1.8} />
                 </div>
 
