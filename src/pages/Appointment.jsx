@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
+import RelatedDoctors from '../components/RelatedDoctors'
 
 const Appointment = () => {
 
@@ -117,35 +118,47 @@ const Appointment = () => {
       <p>Booking slots</p>
       <div className='flex gap-3 items-center w-full overflow-x-scroll mt-4'>
         {
-          docSlots.length && docSlots.map((item, index)=>(
-            <div onClick={()=> setSlotIndex(index)} className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-gray-300'}`} key={index}>
-              <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
-              <p>{item[0] && item[0].datetime.getDate()}</p>
-            </div>
-          ))
+          docSlots.length && docSlots.map((item, index)=>{
+            // Calculate the actual date for this index instead of relying on item[0],
+            // since item[0] can be undefined (e.g. today after last slot has passed)
+            let displayDate = new Date()
+            displayDate.setDate(displayDate.getDate() + index)
+
+            return (
+              <div onClick={()=> setSlotIndex(index)} className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-gray-300'}`} key={index}>
+                <p>{daysOfWeek[displayDate.getDay()]}</p>
+                <p>{displayDate.getDate()}</p>
+              </div>
+            )
+          })
         }
       </div>
 
       {/* time button */}
 
-      <div className='flex items-center gap-3 w-full overflow-x-scroll mt-4 min-w-0'>
-
-      {docSlots.length && docSlots[slotIndex].map((item,index)=>(
-
-      <p onClick={()=> setSlotTime(item.time)} className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${item.time === slotTime ? 'bg-primary text-white' : 'text-gray-400 border border-2 border-gray-300'}`} key={index}>
-
-      {item.time.toLowerCase()}
-
+    <div className='flex sm:flex-wrap items-center gap-3 w-full overflow-x-scroll sm:overflow-visible mt-4 min-w-0'>
+      {docSlots.length && docSlots[slotIndex].length > 0 ? (
+      docSlots[slotIndex].map((item,index)=>(
+      <p key={index} onClick={()=> setSlotTime(item.time)} className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${item.time === slotTime ? 'bg-primary text-white' : 'text-gray-400 border border-2 border-gray-300'}`}>
+    {item.time.toLowerCase()}
       </p>
 
-      ))}
-
-      </div>
-
-
+      ))
+      ) : (
+        docSlots.length > 0 && <p className='text-sm text-gray-400'>No slots available for this day</p>
+      )}
 
     </div>
 
+    {/* book appointment button*/}
+    <button className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'>
+      Book an appointment
+    </button>
+
+    </div>
+
+    {/* listing related doctors */}
+    <RelatedDoctors docId={docId} speciality={docInfo.speciality} />
 
     </div>
   )
