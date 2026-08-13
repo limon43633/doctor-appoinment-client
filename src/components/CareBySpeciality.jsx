@@ -6,46 +6,49 @@ const specialitiesData = [
   {
     name: 'General physician',
     icon: Stethoscope,
-    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/kdtPFYR/General-physician.jpg',
     description: 'Your first point of contact for everyday health concerns and ongoing care.',
     conditions: ['Fever and infections', 'Diabetes management', 'Hypertension', 'Routine health checkups'],
   },
   {
     name: 'Gynecologist',
     icon: Flower2,
-    image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/S4j4YLMN/images.jpg',
     description: "Specialized care for women's reproductive health at every life stage.",
     conditions: ['Prenatal and pregnancy care', 'Menstrual disorders', 'PCOS and hormonal issues', 'Routine gynae screening'],
   },
   {
     name: 'Dermatologist',
     icon: Scan,
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/fG2Fy8MD/dermatologist.jpg',
     description: 'Diagnosis and treatment for skin, hair, and nail conditions.',
     conditions: ['Acne and scarring', 'Eczema and psoriasis', 'Hair loss', 'Allergic skin reactions'],
   },
   {
     name: 'Pediatricians',
     icon: Baby,
-    image: 'https://images.unsplash.com/photo-1632053002220-608e10cc0c92?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/Qvjhy8Fh/Pediatricians.webp',
     description: 'Complete healthcare for infants, children, and adolescents.',
     conditions: ['Growth and development', 'Vaccinations', 'Childhood infections', 'Nutrition guidance'],
   },
   {
     name: 'Neurologist',
     icon: Brain,
-    image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/5gThPzQg/Neurologist.webp',
     description: 'Treatment for disorders of the brain, spine, and nervous system.',
     conditions: ['Migraines and headaches', 'Epilepsy and seizures', 'Nerve pain', 'Memory disorders'],
   },
   {
     name: 'Gastroenterologist',
     icon: HeartPulse,
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/qMVxxTVy/Gastroenterologist.jpg',
     description: 'Care for the digestive system, from stomach to liver.',
     conditions: ['Acid reflux and ulcers', 'IBS and digestive issues', 'Liver conditions', 'Chronic abdominal pain'],
   },
 ]
+
+
+const CARD_HEIGHT = 'h-[380px] md:h-[420px]'
 
 const CareBySpeciality = () => {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -93,9 +96,9 @@ const CareBySpeciality = () => {
           })}
         </div>
 
-        {/* Active speciality detail */}
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-0 bg-white border border-gray-100 rounded-2xl overflow-hidden'>
-          <div className='h-64 md:h-auto'>
+        {/* Active speciality detail — fixed height row so switching tabs never shifts page layout */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 bg-white border border-gray-200 rounded-2xl overflow-hidden ${CARD_HEIGHT}`}>
+          <div className='h-48 md:h-full overflow-hidden'>
             <img
               src={active.image}
               alt={active.name}
@@ -103,15 +106,15 @@ const CareBySpeciality = () => {
             />
           </div>
 
-          <div className='p-8 md:p-10 flex flex-col justify-center'>
+          <div className='p-8 md:p-10 flex flex-col justify-center overflow-y-auto'>
             <div className='flex items-center gap-3 mb-4'>
-              <div className='w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary'>
+              <div className='w-10 h-10 shrink-0 flex items-center justify-center rounded-full bg-primary/10 text-primary'>
                 <ActiveIcon size={18} strokeWidth={1.6} />
               </div>
-              <h3 className='text-xl font-light text-gray-800'>{active.name}</h3>
+              <h3 className='text-3xl font-light text-gray-800'>{active.name}</h3>
             </div>
 
-            <p className='text-sm text-gray-500 font-light leading-relaxed mb-6'>
+            <p className='text-base text-gray-600 font-light leading-relaxed mb-6'>
               {active.description}
             </p>
 
