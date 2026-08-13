@@ -5,6 +5,9 @@ import TopDoctors from '../components/TopDoctors'
 import Banner from '../components/Banner'
 import TrustBar from '../components/TrustBar'
 import Testimonials from '../components/Testimonials'
+import HowItWorks from '../components/HowItWorks'
+import FAQ from '../components/Faq'
+import CareBySpeciality from '../components/CareBySpeciality'
 
 const Home = () => {
   return (
@@ -12,8 +15,11 @@ const Home = () => {
       <Header />
       <TrustBar />
       <SpecialityMenu />
+      <HowItWorks />
       <TopDoctors />
+      <CareBySpeciality />
       <Testimonials />
+      <FAQ />
       <Banner />
     </div>
   )

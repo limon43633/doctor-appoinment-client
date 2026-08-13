@@ -44,7 +44,7 @@ const Testimonials = () => {
         `}
       </style>
 
-      <section className='py-16'>
+      <section className='py-15'>
 
         {/* Section header */}
         <div className='text-center mb-10'>
