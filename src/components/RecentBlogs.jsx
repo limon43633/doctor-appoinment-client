@@ -4,32 +4,32 @@ import React from 'react'
 // Blog data — one common disease/topic per speciality
 const blogsData = [
   {
-    image: 'https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/mCBVMzQS/sick.jpg',
     title: 'Typhoid Fever: Symptoms, Causes and Treatment',
     description: 'Learn about the early warning signs of typhoid, how it spreads, and treatment options.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1607532941433-304659e8198a?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/27Y6RrTR/Gynecologist.jpg',
     title: 'PCOS: Symptoms, Causes and Management',
     description: 'Understand the hormonal imbalance behind PCOS and lifestyle changes that help.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1612531386530-97286d97c2d2?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/q27nQv4/dermatologist-skin-examination.jpg',
     title: 'Eczema: Symptoms, Triggers and Relief',
     description: 'Explore what causes eczema flare-ups and treatments that provide lasting relief.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/yFL144Jx/https-i-ibb-co-com-Rk-XFHms-Y-pediatrician-child-checkup.webp',
     title: 'Chickenpox in Children: What Parents Should Know',
     description: 'A guide to spotting chickenpox early and knowing when to see a doctor.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/3mCS7fpg/https-centralstatespainclinic-com-wp-content-uploads-2023-04-women-suffering-from-severe-headache.jpg',
     title: 'Migraine vs Headache: How to Tell the Difference',
     description: 'Learn the key differences and when a headache needs medical attention.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&auto=format&fit=crop&q=60',
+    image: 'https://i.ibb.co.com/ZRgNCXz4/stomach-digestion-healthy-diet-a17e74bc-f964-485a-af09-09a95adc0b10.webp',
     title: 'Acid Reflux: Symptoms, Causes and Healing',
     description: 'Find out what triggers acid reflux and the changes that help you heal faster.',
   },
@@ -64,7 +64,7 @@ const RecentBlogs = () => {
             className='flex flex-col bg-white border border-gray-100 hover:-translate-y-1 transition duration-300 rounded-2xl p-3 shadow shadow-black/10 max-w-80'
           >
             <img
-              className='rounded-xl h-40 w-full object-cover'
+              className='rounded-xl h-50 w-full object-cover'
               src={blog.image}
               alt={blog.title}
             />
