@@ -61,7 +61,7 @@ const RecentBlogs = () => {
         {blogsData.map((blog, index) => (
           <div
             key={index}
-            className='flex flex-col bg-white border border-gray-100 hover:-translate-y-1 transition duration-300 rounded-2xl p-3 shadow shadow-black/10 max-w-80'
+            className='flex flex-col bg-white border border-gray-100 hover:-translate-y-1 transition duration-300 rounded-2xl p-3  shadow-lg max-w-80'
           >
             <img
               className='rounded-xl h-50 w-full object-cover'
